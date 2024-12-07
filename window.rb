@@ -22,20 +22,20 @@ def demo_while_switchcase
   puts "3 for Strawberry"
   while true
     case gets.chomp.to_i
-      when 1
-        puts "Chocolate: Extra fudge!"
-      when 2
-        puts "Vanilla: Rich and Creamy!"
-      when 3
-        puts "Strawberry: Fresh and Sweet!"
-      else
-        puts "Please enter a number between 1 and 3"
-        puts "1 for Chocolate"
-        puts "2 for Vanilla"
-        puts "3 for Strawberry"
-      end
+    when 1
+      puts "Chocolate: Extra fudge!"
+    when 2
+      puts "Vanilla: Rich and Creamy!"
+    when 3
+      puts "Strawberry: Fresh and Sweet!"
+    else
+      puts "Please enter a number between 1 and 3"
+      puts "1 for Chocolate"
+      puts "2 for Vanilla"
+      puts "3 for Strawberry"
     end
   end
+end
 # since loops and functions begin without braces or colons, they start with keywords and end with 'end'
 # It's a good idea to treat ends like <div> </divs> in html and braces in java.
 
