@@ -4,29 +4,39 @@
 
 ## Box
  def box(arr)
-  # Margin that I made a var so I can tweak it in one place instead of throughout the function
+    # Margin that I made a var so I can tweak it in one place instead of throughout the function
   left_margin = "    "
-  # Prints upper bar
+    ####### Top #######
+    # Prints upper bar
   puts left_margin + '*' * 153
-  # Idea slide height is 15. This calculates the needed empty space above and below the text
+    # Idea slide height is 15. This calculates the needed empty space above and below the text
   room = 15 - arr.length
   extra_room = room / 2
-  # Ruby auto rounds up. This makes it round down.
+    # Ruby auto rounds up. This makes it round down.
   if extra_room % 2 > 0
     extra_room = extra_room - 1
   end
-  # Prints the needed empty upper rows
+    # Prints the needed empty upper rows
   extra_room.times { puts left_margin + "**" + " " * 149 + "**" }
-  # For each line in the slide arr, print left stars, the spaces needed from fill space pre
-  # then the string, then the spaces needed from fill space post and then left stars
+    ###### Middle ######
+    # For each line in the slide arr, print left stars, the spaces needed from fill space pre
+    # then the string, then the spaces needed from fill space post and then left stars
   arr.each do |i|
-    # Current length lets us know how long the line of text is for later.
+      # Current length lets us know how long the line of text is for later.
     current_length = i.length + 1
-    puts left_margin + "** #{fill_space_pre} #{i} #{fill_space_post(current_length)} **"
+      #Checks to see if string should be centered with the code ~~  that I made up
+    if i.include?("~~ ")
+      puts left_margin + "**#{center_title(current_length)}#{i}#{center_title(current_length)}**"
+    else
+        # If not the title, prints the line with the spaces before and after
+        # per the fill space defs below.
+      puts left_margin + "**#{fill_space_pre}#{i}#{fill_space_post(current_length)}**"
+    end
   end
-  # Prints the needed empty lower rows
+    ###### Bottom ######
+    # Prints the needed empty lower rows
   extra_room.times { puts left_margin + "**" + " " * 149 + "**" }
-  # Prints lower bar
+    # Prints lower bar
   puts left_margin + '*' * 153
 end
 
@@ -35,12 +45,18 @@ end
 def fill_space_pre
   str= ' ' * 8
 end
+
 # This provides the spaces on the right
 def fill_space_post(current_length)
-  # Spaces to fill is the total empty non-star space of the slide
-  # minus the current length of the line of text.
-  spaces_to_fill = 146 - current_length
+    # Spaces to fill is the total empty non-star space of the slide
+    # minus the current length of the line of text.
+  spaces_to_fill = 150 - current_length
   str = ' ' * (spaces_to_fill-8)
+end
+# Gives the spaces needed to center the line for a title
+def center_title(current_length)
+  outer_space = 150 - current_length
+  str = ' ' * (outer_space / 2)
 end
 # the fill spaces functions do not print on their own, but since they are included in a puts
 # concat above, they print.
@@ -64,7 +80,7 @@ end
 # 132 chars across. 10 lines to a slide
 # Every slide is an array of strings. One string is one line of text.
 
-big_words3 = ["and practical utility like that of Perl.","The name 'Ruby' originated during an online chat session between Matsumoto and",
+big_words3 = ["~~ and practical utility like that of Perl.","The name 'Ruby' originated during an online chat session between Matsumoto and",
               "Keiju Ishitsuka on February 24, 1993, before any code had been written for the language.",
               "Initially two names were proposed: 'Coral'' and 'Ruby''. Matsumoto chose the latter in a later",
               "e-mail to Ishitsuka.[13] Matsumoto later noted a factor in choosing the name 'Ruby'–it was the",
@@ -75,7 +91,14 @@ big_words4 = ["POh wow this is kinda working",
 big_words5 = ["Testing","How","many","lines","before",
               "there","is","problem","should","be"]
 big_words6 = [" ","testing empty strings"," ","lots of tests","BIG BIG"," ","TESTS"]
+big_words7 = [" "]
 
+s1_intro = ["~~ Ruby is an Object Oriented Programming language.","That means it abides by the four pillars:",
+            "Encapsulation","Inheritance","Polymorphism","Abstraction"]
+s2_encap = [" "]
+s3_inher = [" "]
+s4_poly = [" "]
+s5_abs = [" "]
 ############## SLIDE SHOW ###############
 empty_screen
 box(big_words3)
@@ -85,4 +108,6 @@ click
 box(big_words5)
 click
 box(big_words6)
+click
+box(big_words7)
 click
