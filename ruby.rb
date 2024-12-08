@@ -80,34 +80,34 @@ end
 # 132 chars across. 10 lines to a slide
 # Every slide is an array of strings. One string is one line of text.
 
-big_words3 = ["~~ and practical utility like that of Perl.","The name 'Ruby' originated during an online chat session between Matsumoto and",
-              "Keiju Ishitsuka on February 24, 1993, before any code had been written for the language.",
-              "Initially two names were proposed: 'Coral'' and 'Ruby''. Matsumoto chose the latter in a later",
-              "e-mail to Ishitsuka.[13] Matsumoto later noted a factor in choosing the name 'Ruby'–it was the",
-              "birthstone of one of his colleagues."]
-big_words4 = ["POh wow this is kinda working",
-              "I hope this keeps going well because this is neat and I think they will be impressed and happy this is testing any wrapping overflow",
-              "The above line is the longest it can be before throwing an error."]
-big_words5 = ["Testing","How","many","lines","before",
-              "there","is","problem","should","be"]
-big_words6 = [" ","testing empty strings"," ","lots of tests","BIG BIG"," ","TESTS"]
-big_words7 = [" "]
-
 s1_intro = ["~~ Ruby is an Object Oriented Programming language.","That means it abides by the four pillars:",
-            "Encapsulation","Inheritance","Polymorphism","Abstraction"]
-s2_encap = [" "]
-s3_inher = [" "]
-s4_poly = [" "]
-s5_abs = [" "]
+            "Abstraction", "Encapsulation", "Inheritance", "Polymorphism"]
+s2_abs = ["~~ ABSTRACTION",
+          "Ruby allows programmers to abstract real-world objects and data into classes and variables",
+          "The programmer does not need to declare the data type when creating a variable.",
+          "Casting is still needed at times and can be done with .to_ and then a letter for the data type",
+          "Classes can be used to create objects with built in attributes and methods.",
+          "A new class is made by object = object.new",
+          " ",
+          "Through the use of puts, and print, the user only sees what is needed and interacts with the user through the gets keyword.",
+          "Right now, this program is taking each line and finds the space needed before, after, to the left, and right.",
+          "Showing only a slide with aligned text and a relatively uniform size."]
+s3_encap = ["~~ ENCAPSULATION",
+            "Ruby protects and hides data through the use of instance variable, attribute accessors, readers, and writers.",
+            "These look like @ to denote a class' instance variable, and then attr_accessor, attr_reader, and attr_writer.",
+            "These make it so that we can set or get the instance variable elsewhere. The attr_accessor is both getter and setter.",
+            "You can designate what instance variables you want to be read-only,write-only, or both"]
+s4_inher = ["~~ INHERITANCE"]
+s5_poly = ["~~ POLYMORPHISM"]
 ############## SLIDE SHOW ###############
 empty_screen
-box(big_words3)
+box(s1_intro)
 click
-box(big_words4)
+box(s2_abs)
 click
-box(big_words5)
+box(s3_encap)
 click
-box(big_words6)
+box(s4_inher)
 click
-box(big_words7)
+box(s5_poly)
 click
