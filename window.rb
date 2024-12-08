@@ -1,3 +1,43 @@
+#### UTILITY ####
+def empty_screen
+  29.times { puts "\n" }
+end
+
+#Continue
+def click
+  button = gets
+  if button == "\n"
+    empty_screen
+  end
+end
+
+
+### ENCAPSULATION EXAMPLE ###
+class Butterfly
+  attr_accessor :color,:size
+  def initialize(color,size)
+    @color=color
+    @size=size
+  end
+end
+
+monarch=Butterfly.new("yellow","medium")
+puts "******** ENCAPSULATION DEMO ********"
+puts " "
+puts "I have a butterfly that is #{monarch.color} and is #{monarch.size}."
+monarch.color="purple"
+monarch.size="big"
+puts "Now it is #{monarch.color} and is #{monarch.size}."
+click
+
+
+
+
+
+
+
+
+
 def demo_math
   puts "******** DEMO MATH ********"
   puts " "
