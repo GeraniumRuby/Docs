@@ -24,8 +24,8 @@ class Butterfly
     # attr_reader lets you read only and attr_accessor will let you write only.
   attr_accessor :color,:size
     # def initialize is where the values for the instance variables are held when the class is obstantiated.
-    # This is similar to class constructor in Java. Without the above attr_ these would be private by default and be
-    # completely unreachable. Any invocation of object.variable will return with a method-related error.
+    # This is similar to a class constructor in Java. Without the above attr_ these would be private by default and
+    # would be completely unreachable. Without it any invocation of object.variable would return with a method-related error.
  def initialize(color,size)
    @color=color
    @size=size
@@ -34,7 +34,7 @@ end
 
   # Creating a new object of class Butterfly. Instance variables are set here.
 monarch=Butterfly.new("yellow","medium")
-soft
+soft #top buffer and dashes
 puts "******** ENCAPSULATION DEMO ********"
 puts " "
   # Here, we are able to read the color and size because the attr_accessor gives us permission.
@@ -72,6 +72,32 @@ puts "Sally says #{sally.wave}!"
 puts "John says #{john.wave}!"
 soft
 click
+
+
+######### Inheritance with Super ########
+soft
+puts "******** Inheritance with Super ********"
+puts " "
+class Instrument
+  def i_am
+    puts "I'm an instrument, I make noise"
+  end
+end
+class Drum < Instrument
+  # The super keyword here means that both the super class and this subclass' methods should be performed.
+  def i_am
+    super
+    puts "I am a drum, I go bam bam."
+  end
+end
+
+snare = Drum.new
+snare.i_am
+# Both the line from the instrument class was printed, as well as the drum line
+# with just one method call.
+soft
+click
+
 
 ########## POLYMORPHISM DEMO ##########
 ##  ##  Poly through Inheritance ## ##
@@ -147,26 +173,20 @@ puts " "
 puts "Warm Bodies by Isaac Marion."
 # Both books are obstantiated under the name b_info. The methods still work as expected because Ruby focuses on
 # what a class does, rather than what it is named. The subclass that it was made as matters move than the var it
-# is called by. 
+# is called by.
 b_info = Romance.new
 white_case.genre(b_info)
 white_case.shelf(b_info)
 soft
 click
+#######################################################
+soft
+puts "Other fun examples!"
+soft
+click
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+######################################################
+###### Demo Math #######
 def demo_math
   puts "******** DEMO MATH ********"
   puts " "
@@ -177,19 +197,27 @@ def demo_math
   sum=num1+num2
   puts "The sum is #{sum}."
 end
+
+soft
+puts"******** Demo Simple Math, Intake, and Casting ********"
+puts " "
+demo_math
+soft
+click
 # .chomp removes the enter that follows the input when gets is used.
 #  .to_i casts the gets string into an integer
-#  #{var} is a way or format rinting a variable that changes.
+#  #{var} is a way of format printing a variable that changes.
 #  #{.  } can also call functions inside a puts print line
 
-def demo_while_switchcase
-  puts "******  DEMO WHILE SWITCHCASE *******"
+###### Demo While and Switch Case ######
+def demo_switchcase
+  soft
+  puts "******  DEMO SWITCHCASE *******"
   puts " "
   puts "Pick a flavor:"
   puts "1 for Chocolate"
   puts "2 for Vanilla"
   puts "3 for Strawberry"
-  while true
     case gets.chomp.to_i
     when 1
       puts "Chocolate: Extra fudge!"
@@ -202,16 +230,53 @@ def demo_while_switchcase
       puts "1 for Chocolate"
       puts "2 for Vanilla"
       puts "3 for Strawberry"
-    end
   end
 end
-# since loops and functions begin without braces or colons, they start with keywords and end with 'end'
+demo_switchcase
+soft
+click
+# Since loops and functions begin without braces or colons, they start with keywords and end with 'end'
 # It's a good idea to treat ends like <div> </divs> in html and braces in java.
 
 def demo_range_each
+  soft
   puts "******  DEMO RANGE_EACH *******"
   puts " "
-  (1..10) .each { |i| puts i}
+  (1..10) .each { |i| print i}
 end
+demo_range_each
+soft
+click
 # In the parentheses, you place your start and end, .each lets Ruby know that for every |i| you will print i
+# Everything in the braces is called a block, which are like small anon functions or lambdas.
+# Anything between pipes is the block argument and anything after it is the block body.
+# Here, it's saying print i, taking the argument i from the range loop.
 
+###### DEMO UNLESS ######
+def demo_unless
+  10.times do |i|
+    next unless i.even?
+    puts "hello #{i}"
+  end
+end
+# Prints evens. next skips it, unless asks to check another conditional.
+# The question mark implies an if to the conditional even.
+# From 0 to ten, skip if it is odd, if it is even, then print Hello, number.
+soft
+puts "******** DEMO UNLESS *******"
+puts " "
+demo_unless
+soft
+click
+######## DEMO SELECT #######
+def demo_select_and
+  (0...10).select(&:even?)
+end
+# The &: here is a way to express the |i| i.method block in just two characters.
+# The function is a range loop and returns (select) numbers that are even.
+soft
+puts "******** DEMO SELECT *******"
+puts " "
+print demo_select_and
+soft
+click
