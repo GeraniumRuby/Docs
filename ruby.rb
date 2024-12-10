@@ -97,7 +97,12 @@ s3_encap = ["~~ ENCAPSULATION",
             "These look like @ to denote a class' instance variable, and then attr_accessor, attr_reader, and attr_writer.",
             "These make it so that we can set or get the instance variable elsewhere. The attr_accessor is both getter and setter.",
             "You can designate what instance variables you want to be read-only,write-only, or both"]
-s4_inher = ["~~ INHERITANCE"]
+s4_inher = ["~~ INHERITANCE",
+            "The use of classes and subclasses is an important aspect to Ruby.",
+            "A subclass is denoted with the < symbol. Subclasses inherit all attributes and methods of its parent class.",
+            "An attribute that belongs to the whole class is denoted with @@ and is often only used for instance counting since",
+            "any instance of the class and/or its subclasses can alter it on accident. Instead, class instance variables are preferred",
+            "because it narrows the probability of unintended bugs."]
 s5_poly = ["~~ POLYMORPHISM"]
 ############## SLIDE SHOW ###############
 empty_screen

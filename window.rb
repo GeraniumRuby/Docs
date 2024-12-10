@@ -1,6 +1,6 @@
 #### UTILITY ####
 def empty_screen
-  29.times { puts "\n" }
+  10.times { puts "\n" }
 end
 
 #Continue
@@ -11,24 +11,153 @@ def click
   end
 end
 
+#Bottom Padding
+def soft
+  4.times { puts "\n" }
+  print "--"*20
+  2.times { puts "\n" }
+end
 
 ### ENCAPSULATION EXAMPLE ###
 class Butterfly
+    # attr_accessor means that invoking object.variable will let you both read and write that variable in that object.
+    # attr_reader lets you read only and attr_accessor will let you write only.
   attr_accessor :color,:size
-  def initialize(color,size)
-    @color=color
-    @size=size
+    # def initialize is where the values for the instance variables are held when the class is obstantiated.
+    # This is similar to class constructor in Java. Without the above attr_ these would be private by default and be
+    # completely unreachable. Any invocation of object.variable will return with a method-related error.
+ def initialize(color,size)
+   @color=color
+   @size=size
+ end
+end
+
+  # Creating a new object of class Butterfly. Instance variables are set here.
+monarch=Butterfly.new("yellow","medium")
+soft
+puts "******** ENCAPSULATION DEMO ********"
+puts " "
+  # Here, we are able to read the color and size because the attr_accessor gives us permission.
+puts "I have a butterfly that is #{monarch.color} and is #{monarch.size}."
+  # Here, we are re-writing those instance variables. We can do that because attr_accessor both sets and gets
+monarch.color="purple"
+monarch.size="big"
+  # Now, we can reread the variables and can see that they have been changed.
+puts "Now it is #{monarch.color} and is #{monarch.size}."
+soft
+click
+
+
+#### INHERITANCE DEMO ####
+class Person
+  def wave
+    "Hello!"
   end
 end
 
-monarch=Butterfly.new("yellow","medium")
-puts "******** ENCAPSULATION DEMO ********"
+  # Child classes Boy and Girl hold no methods.
+class Boy < Person
+end
+
+class Girl < Person
+end
+
+  # Here, we can see that they have inherited the wave method from parent class Person.
+john = Boy.new
+sally = Girl.new
+soft
+puts "******** INHERITANCE DEMO ********"
 puts " "
-puts "I have a butterfly that is #{monarch.color} and is #{monarch.size}."
-monarch.color="purple"
-monarch.size="big"
-puts "Now it is #{monarch.color} and is #{monarch.size}."
+puts "Sally says #{sally.wave}!"
+puts "John says #{john.wave}!"
+soft
 click
+
+########## POLYMORPHISM DEMO ##########
+##  ##  Poly through Inheritance ## ##
+class Animal
+  def speak
+    "Hello!"
+  end
+end
+
+class Dog < Animal
+  def speak
+    "WOOF!"
+  end
+end
+
+class Cat < Animal
+  def speak
+    "MEOW!"
+  end
+end
+
+sandy = Dog.new
+aria = Cat.new
+enda = Animal.new
+soft
+puts "******** Polymorphism through Inheritance ********"
+puts " "
+puts "Sandy the dog says #{sandy.speak}."
+puts "Aria the cat says #{aria.speak}."
+puts "Enda the person says #{enda.speak}."
+soft
+click
+# The speak method was able to be altered through each class and subclass.
+
+###### ## ## Poly through Duck Typing ## ## #######
+class Bookcase
+  def genre(b_info)
+    b_info.genre
+  end
+
+  def shelf(b_info)
+    b_info.shelf
+  end
+end
+
+class Romance
+  def genre
+    puts "This is a romance book."
+  end
+  def shelf
+    puts "This goes on the third shelf."
+  end
+end
+
+class Horror
+  def genre
+    puts "This is a horror book."
+  end
+  def shelf
+    puts "This goes on the second shelf."
+  end
+end
+
+soft
+puts" ******** Polymorphism through Duck Typing ********"
+puts " "
+white_case=Bookcase.new
+puts "Tender is the Flesh by Agustina Bazterrica."
+b_info = Horror.new
+white_case.genre(b_info)
+white_case.shelf(b_info)
+puts " "
+puts "Warm Bodies by Isaac Marion."
+# Both books are obstantiated under the name b_info. The methods still work as expected because Ruby focuses on
+# what a class does, rather than what it is named. The subclass that it was made as matters move than the var it
+# is called by. 
+b_info = Romance.new
+white_case.genre(b_info)
+white_case.shelf(b_info)
+soft
+click
+
+
+
+
+
 
 
 
